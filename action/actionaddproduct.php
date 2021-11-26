@@ -1,4 +1,6 @@
 <?php
+// membuka session start
+session_start();
 // menghubungkan file config database
 require '../database/config.php';
 
@@ -13,7 +15,11 @@ $query = mysqli_query($con, "insert into tb_product(name,price,description)
 
 // melakukan pengecekan lalu redirect halaman product
 if ($query) {
+    // membuat session pesan untuk bisa ditampilkan di halaman product
+    $_SESSION['pesan'] = 'Add Product Successfully';
     header('location:../index.php?page=product');
 } else {
-    header('location:../index.php?page=addproduct');
+    // membuat session pesan error untuk ditampilkan di halaman product
+    $_SESSION['pesan'] = 'Error';
+    header('location:../index.php?page=product');
 }

@@ -4,6 +4,17 @@ $query = mysqli_query($con, "select * from tb_product");
 ?>
 <div class="container mt-5 mb-5">
     <h1 class="text-center text-secondary mb-5">Product</h1>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+            <?php if (isset($_SESSION['pesan'])) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong><?= $_SESSION['pesan']; ?></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php unset($_SESSION['pesan']) ?>
+            <?php } ?>
+        </div>
+    </div>
     <div class="row">
 
         <?php while ($data = mysqli_fetch_assoc($query)) { ?>
