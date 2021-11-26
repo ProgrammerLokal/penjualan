@@ -32,6 +32,9 @@
                         <a class="nav-link" href="index.php?page=product"><i class="fab fa-product-hunt text-white"></i> Product</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=addproduct"><i class="fas fa-plus text-white"></i> Add Product</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="index.php?page=about"><i class="fas fa-building text-white"></i> About</a>
                     </li>
                     <li class="nav-item">
