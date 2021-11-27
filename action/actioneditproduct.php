@@ -5,6 +5,7 @@ session_start();
 require '../database/config.php';
 
 // menampung value inputan yang dikirim dari form kedalam variabel
+$id = $_POST['id'];
 $name = $_POST['name'];
 $price = $_POST['price'];
 $description = $_POST['description'];
@@ -15,13 +16,12 @@ if(empty($name) || empty($price) || empty($description)){
 }else{
     if(is_numeric($price)){
         // melakukan query insert data kedalam database
-        $query = mysqli_query($con, "insert into tb_product(name,price,description) 
-        values('$name','$price','$description')");
-
+        $query = mysqli_query($con, "update tb_product 
+        set name='$name', price='$price', description='$description' where id=".$id);
         // melakukan pengecekan lalu redirect halaman product
         if ($query) {
         // membuat session pesan untuk bisa ditampilkan di halaman product
-        $_SESSION['pesan'] = 'Add Product Successfully';
+        $_SESSION['pesan'] = 'Edit Product Successfully';
         header('location:../index.php?page=product');
         } else {
         // membuat session pesan error untuk ditampilkan di halaman product

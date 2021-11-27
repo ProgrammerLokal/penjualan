@@ -17,6 +17,9 @@ switch ($page) {
     case 'addproduct':
         include 'content/addproduct.php';
         break;
+        case 'editproduct':
+            include 'content/editproduct.php';
+            break;
     default:
         include 'content/home.php';
 }

@@ -4,6 +4,7 @@ $query = mysqli_query($con, "select * from tb_product");
 ?>
 <div class="container mt-5 mb-5">
     <h1 class="text-center text-secondary mb-5">Product</h1>
+    <a href="index.php?page=addproduct" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Add Product</a>
     <div class="row justify-content-center mb-5">
         <div class="col-md-6">
             <?php if (isset($_SESSION['pesan'])) { ?>
@@ -25,8 +26,8 @@ $query = mysqli_query($con, "select * from tb_product");
                         <h5 class="card-title"><?= $data['name'] ?></h5>
                         <span class="badge bg-primary"><?= $data['price'] ?></span>
                         <p class="card-text"><?= $data['description'] ?></p>
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i> Cart</a>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-eye"></i> Detail</a>
+                        <a href="index.php?page=editproduct&kode_product=<?=$data['id']?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="action/actiondeleteproduct.php?kode_product=<?=$data['id']?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data ?')"><i class="fas fa-trash"></i> Delete</a>
                     </div>
                 </div>
             </div>
