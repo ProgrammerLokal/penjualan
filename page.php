@@ -8,18 +8,15 @@ switch ($page) {
     case 'about':
         include 'content/about.php';
         break;
-    case 'login':
-        include 'content/login.php';
-        break;
     case 'product':
         include 'content/product.php';
         break;
     case 'addproduct':
         include 'content/addproduct.php';
         break;
-        case 'editproduct':
-            include 'content/editproduct.php';
-            break;
+    case 'editproduct':
+        include 'content/editproduct.php';
+        break;
     default:
         include 'content/home.php';
 }

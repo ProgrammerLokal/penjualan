@@ -15,4 +15,4 @@ $query = mysqli_query($con,"delete from tb_product where id=".$kode_product);
     // membuat session pesan error untuk ditampilkan di halaman product
     $_SESSION['pesan'] = 'Error';
     header('location:../index.php?page=product');
-    }
+}

@@ -35,9 +35,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?page=about"><i class="fas fa-building text-white"></i> About</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="index.php?page=login" class="nav-link"><i class="fas fa-sign-in-alt text-white"></i> Login</a>
-                    </li>
+
+                    <!-- melakukan pengecekan apakah ada session dengan nama id user -->
+                    <?php if (isset($_SESSION['id_user'])) { ?>
+                        <!-- jika ada maka tampilkan logout -->
+                        <li class="nav-item">
+                            <a href="logout.php" class="nav-link"><i class="fas fa-sign-in-alt text-white"></i> Logout</a>
+                        </li>
+                    <?php } else { ?>
+                        <!-- jika tidak ada tampilkan login -->
+                        <li class="nav-item">
+                            <a href="login.php" class="nav-link"><i class="fas fa-sign-in-alt text-white"></i> Login</a>
+                        </li>
+                    <?php } ?>
+
                 </ul>
             </div>
         </div>
