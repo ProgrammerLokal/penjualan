@@ -29,9 +29,22 @@
                         <a class="nav-link active" aria-current="page" href="index.php"><i class="fas fa-home text-white"></i>
                             Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=product"><i class="fab fa-product-hunt text-white"></i> Product</a>
-                    </li>
+                    <!-- dilakukan pengcekan apakah ada session dengan nama id user -->
+                    <?php if (isset($_SESSION['id_user'])) { ?>
+                        <?php if ($_SESSION['role'] == 'admin') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?page=product"><i class="fab fa-product-hunt text-white"></i> Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?page=users"><i class="fab fa-product-hunt text-white"></i> Users</a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?page=product"><i class="fab fa-product-hunt text-white"></i> Product</a>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+                    <!-- akhir pengcekan id user -->
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?page=about"><i class="fas fa-building text-white"></i> About</a>
                     </li>

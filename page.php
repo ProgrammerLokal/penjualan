@@ -3,13 +3,15 @@
 include 'database/config.php';
 // mengambil reqest get dengan nama page
 $page = isset($_GET['page']) ? $_GET['page'] : '';
-
 switch ($page) {
     case 'about':
         include 'content/about.php';
         break;
     case 'product':
         include 'content/product.php';
+        break;
+    case 'users':
+        include 'content/users.php';
         break;
     case 'addproduct':
         include 'content/addproduct.php';
