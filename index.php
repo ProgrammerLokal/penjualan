@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!-- css footer -->
     <link rel="stylesheet" href="bootstrap/footers.css">
+    <!-- link jquery -->
+    <script src="js/jquery.min.js"></script>
+
     <title>Halaman Home</title>
 </head>
 

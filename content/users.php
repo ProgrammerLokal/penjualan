@@ -1,5 +1,12 @@
 <?php
+$search = $_GET['search'] ?? '';
+
 $query = mysqli_query($con, "select * from tb_users");
+
+if ($search) {
+    $query = mysqli_query($con, "select * from tb_users where nama like '%$search%' or username like '%$search%'");
+}
+// var_dump($query);
 ?>
 <!-- halaman content -->
 <div class="container mt-5 mb-5">
@@ -16,6 +23,17 @@ $query = mysqli_query($con, "select * from tb_users");
         </div>
     </div>
 
+    <div class="row">
+        <form action="">
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <input type="hidden" name="page" value="users">
+                    <input type="text" class="form-control" name="search" value="<?= $search ?>" placeholder="Masukan pencarian..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <button type="submit" class="btn btn-primary" id="basic-addon2"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="row">
         <div class="table-responsive">
             <table class="table">
@@ -44,6 +62,7 @@ $query = mysqli_query($con, "select * from tb_users");
                     <?php } ?>
                 </tbody>
             </table>
+            <a href="eksport_user.php" class="btn btn-dark" title="print"><i class="fa fa-print"></i></a>
         </div>
     </div>
 
@@ -60,12 +79,14 @@ $query = mysqli_query($con, "select * from tb_users");
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <ul class="list-group">
                     <li class="list-group-item" id="user_id">An item</li>
                     <li class="list-group-item" id="user_username">A second item</li>
                     <li class="list-group-item" id="user_nama">A third item</li>
                     <li class="list-group-item" id="user_role">A fourth item</li>
                 </ul>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -77,10 +98,26 @@ $query = mysqli_query($con, "select * from tb_users");
 <!-- end modal -->
 
 <script>
+    // mengambil elemen dengan id detail user
     let user = document.querySelectorAll('#detail_user');
+    // melakukan perulangan dari variabel user
     user.forEach(element => {
-        element.addEventListener('click', function() {
-            alert('Hello Word');
+        element.addEventListener('click', function(event) {
+            // menampung hasil dari pengambilan attribut kedalam variabel
+            let id = $(this).attr('data-id');
+            let username = $(this).attr('data-username');
+            let nama = $(this).attr('data-nama');
+            let role = $(this).attr('data-role');
+
+            $('#user_id').html('Id User : ' + id);
+            $('#user_username').html('Username : ' + username);
+            $('#user_nama').html('Nama User : ' + nama);
+            $('#user_role').html('Role User : ' + role);
+
+            // document.getElementById('user_id').innerHTML = 'Id User : ' + id;
+            // document.getElementById('user_username').innerHTML = 'Username : ' + username;
+            // document.getElementById('user_nama').innerHTML = 'Nama User : ' + nama;
+            // document.getElementById('user_role').innerHTML = 'Role User : ' + role;
         });
     });
 </script>
